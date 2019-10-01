@@ -1,3 +1,5 @@
+Original project: https://github.com/fikr4n/itl-java
+
 # بسم الله الرّحمٰن الرّحيم #
 
 ITL Java is a Java library for calculating prayer (salat) times, qibla direction, and Hijri date.
