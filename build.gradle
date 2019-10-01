@@ -22,3 +22,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
     delete project(':app').fileTree(dir: 'libs', include: ['itl-*.jar'])
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

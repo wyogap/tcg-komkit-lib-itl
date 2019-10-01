@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/itl/itl.iml" filepath="$PROJECT_DIR$/.idea/modules/itl/itl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/itl-java.iml" filepath="$PROJECT_DIR$/.idea/modules/itl-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="tcg-lib-islam/app" />
+      <module fileurl="file://$PROJECT_DIR$/itl/itl.iml" filepath="$PROJECT_DIR$/itl/itl.iml" group="tcg-lib-islam/itl" />
+      <module fileurl="file://$PROJECT_DIR$/tcg-lib-islam.iml" filepath="$PROJECT_DIR$/tcg-lib-islam.iml" group="tcg-lib-islam" />
     </modules>
   </component>
 </project>

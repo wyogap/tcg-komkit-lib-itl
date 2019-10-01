@@ -4,6 +4,13 @@ version = '0.7.0'
 sourceCompatibility = "1.6"
 targetCompatibility = "1.6"
 
+def ARTIFACT_GROUP = "tcg.lib"
+def ARTIFACT_ID = "islamic-toolkit-lib"
+def ARTIFACT_VERSION = version
+def projectName = ARTIFACT_GROUP.replace('-', '.') + "." + ARTIFACT_ID.replace('-', '.')
+
+compileJava.options.encoding = 'UTF-8'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
@@ -21,4 +28,49 @@ task dist(type: Zip) {
     from file('../AUTHORS')
     from file('../README.md')
     from file('../README.orig.md')
+}
+
+jar {
+    archivesBaseName = ARTIFACT_ID.replace('.', '-')
+    manifest {
+        attributes(
+                'Implementation-Title': projectName,
+                'Implementation-Version': version
+        )
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar//, javadocJar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            if (plugins.hasPlugin('war')) {
+                from components.web
+            } else {
+                from components.java
+            }
+
+            artifact sourcesJar
+            //artifact javadocJar
+
+            groupId ARTIFACT_GROUP
+            artifactId ARTIFACT_ID
+            version ARTIFACT_VERSION
+        }
+    }
 }
